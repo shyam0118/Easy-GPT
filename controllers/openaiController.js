@@ -1,16 +1,14 @@
 const dotenv = require("dotenv");
-dotenv.config();
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+require('dotenv').config();
+const { OpenAI } = require("openai");
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
 exports.summaryController = async (req, res) => {
+  console.log("🚀 ~ exports.summaryController= ~ req:", req)
   try {
     const { text } = req.body;
-    const { data } = await openai.createCompletion({
-      model: "text-davinci-003",
+    const { data } = await openai.chat.completions.create({
+      model: "gpt-4o",
       prompt: `Summarize this \n${text}`,
       max_tokens: 500,
       temperature: 0.5,
