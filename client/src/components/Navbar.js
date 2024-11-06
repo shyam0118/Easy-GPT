@@ -22,34 +22,46 @@ const Navbar = () => {
   };
   return (
     <Box
-      width={"100%"}
+      width="100%"
       backgroundColor={theme.palette.background.alt}
       p="1rem 6%"
-      textAlign={"center"}
+      display="flex"
+      alignItems="center"
       sx={{ boxShadow: 3, mb: 2 }}
     >
-      <Typography variant="h1" color="primary" fontWeight="bold">
+      <Typography
+        variant="h1"
+        color="primary"
+        fontWeight="bold"
+        sx={{ flexGrow: 1, textAlign: "center" }}
+      >
         NexaAI
       </Typography>
-      {loggedIn ? (
-        <>
-          <NavLink to="/" p={1}>
-            Home
-          </NavLink>
-          <NavLink to="/login" onClick={handleLogout} p={1}>
-            Logout
-          </NavLink>
-        </>
-      ) : (
-        <>
-          <NavLink to="/register" p={1}>
-            Sign Up
-          </NavLink>
-          <NavLink to="/login" p={1}>
-            Sign In
-          </NavLink>
-        </>
-      )}
+      <Box display="flex" marginLeft="auto">
+        {loggedIn ? (
+          <>
+            <NavLink to="/" style={{ padding: "0 1rem" }}>
+              Home
+            </NavLink>
+            <NavLink
+              to="/login"
+              onClick={handleLogout}
+              style={{ padding: "0 1rem" }}
+            >
+              Logout
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink to="/register" style={{ padding: "0 1rem" }}>
+              Sign Up
+            </NavLink>
+            <NavLink to="/login" style={{ padding: "0 1rem" }}>
+              Sign In
+            </NavLink>
+          </>
+        )}
+      </Box>
     </Box>
   );
 };
