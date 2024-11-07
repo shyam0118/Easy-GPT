@@ -33,24 +33,19 @@ const Navbar = () => {
         variant="h1"
         color="primary"
         fontWeight="bold"
-        sx={{ flexGrow: 1, textAlign: "center" }}
+        sx={{ flexGrow: 1, textAlign: "left" }}
       >
         NexaAI
       </Typography>
       <Box display="flex" marginLeft="auto">
         {loggedIn ? (
-          <>
-            <NavLink to="/" style={{ padding: "0 1rem" }}>
-              Home
-            </NavLink>
-            <NavLink
-              to="/login"
-              onClick={handleLogout}
-              style={{ padding: "0 1rem" }}
-            >
-              Logout
-            </NavLink>
-          </>
+          <NavLink
+            to="/login"
+            onClick={handleLogout}
+            style={{ padding: "0 1rem" }}
+          >
+            Logout
+          </NavLink>
         ) : (
           <>
             <NavLink to="/register" style={{ padding: "0 1rem" }}>
